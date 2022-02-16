@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Memo{% endblock %}
+
+{% block body %}
+    <h1>Memo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ memo.id }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ memo.contenu }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ expiredTime }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('memo_index') }}">back to list</a>
+
+    <a href="{{ path('memo_edit', {'id': memo.id}) }}">edit</a>
+
+    {{ include('memo/_delete_form.html.twig') }}
+{% endblock %}

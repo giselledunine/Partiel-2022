@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les Memo{% endblock %}
+
+{% block body %}
+    <h1>Tous les Memo</h1>
+
+    {% for memo in memos %}
+        <div class="memo">
+            <h2>Memo {{ memo.id }}</h2>
+            <p>
+                {{ memo.contenu }}
+            </p>
+            <p>Expire à {{ memo.expiredTime}}</p>
+            <a href="{{ path('memo_show', {'id': memo.id}) }}">Voir</a>
+            <a href="{{ path('memo_edit', {'id': memo.id}) }}">Modifier</a>
+        </div>
+    {% else %}
+        <tr>
+            <td colspan="4">Pas de memo</td>
+        </tr>
+    {% endfor %}
+
+    <a href="{{ path('memo_new') }}">Créer un nouveau memo</a>
+{% endblock %}
